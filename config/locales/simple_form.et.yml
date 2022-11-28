@@ -1,4 +1,3 @@
----
 et:
   simple_form:
     hints:
@@ -14,6 +13,12 @@ et:
         send_email_notification: Konto omanik saab selgituse selle kohta, mis juhtus nende kontoga
         text_html: Valikuline. Te saate kasutada tuututuse süntaksi. Te saate <a href="%{path}">lisada hoiatuste eelseadistusi</a> aega säästmiseks
         type_html: Vali, mida teha kasutajaga <strong>%{acct}</strong>
+        types:
+          disable: Prevent the user from using their account, but do not delete or hide their contents.
+          none: Use this to send a warning to the user, without triggering any other action.
+          sensitive: Kogu kasutaja meediasisu märgitakse kui tundlik sisu.
+          silence: Prevent the user from being able to post with public visibility, hide their posts and notifications from people not following them.
+          suspend: Takistamaks suhtlust selle kontoga ja kustutamaks kogu sisu. Tagasivõetav 30 päeva jooksul.
         warning_preset_id: Valikuline. Te saate ikka lisada mis tahes teksti eelseadistuse lõppu
       announcement:
         all_day: Kui valitud, ainult kuupäevad antud ajavahemikus on kuvatud
@@ -21,14 +26,17 @@ et:
         scheduled_at: Jäta tühjaks, et avaldada teadaande koheselt
         starts_at: Valikuline. Juhul, kui teie teadaanne on limiteeritud kindlale ajavahemikule
         text: Te saate kasutada tuututuse süntaksi. Palun pidage silmas seda, kui palju ruumi teadaanne võtab kasutaja ekraanil
+      appeal:
+        text: You can only appeal a strike once
       defaults:
         autofollow: Inimesed, kes loovad konto selle kutse läbi, automaatselt jälgivad Teid
         avatar: PNG, GIF või JPG. Kõige rohkem %{size}. Vähendatakse %{dimensions} pikslini
-        bot: See konto teeb enamjaolt automatiseeritud tegevusi ja ei pruugi olla järelvalve all
+        bot: Teavita teisi, et see konto teeb enamjaolt automatiseeritud tegevusi ja ei pruugi olla järelvalve all
         context: Üks või mitu konteksti, mille vastu see filter peaks rakenduma
-        current_password: Turvalisuse huvides palun sisestage praeguse konto salasõna
+        current_password: Turvalisuse huvides palume sisestage praeguse konto salasõna
         current_username: Kinnitamiseks palun sisestage oma konto kasutajanimi
         digest: Saadetakse ainult pärast pikka perioodi tegevusetust ja ainult siis, kui Teile on saadetud privaatseid sõnumeid
+        discoverable: Allow your account to be discovered by strangers through recommendations, trends and other features
         email: Teile saadetakse kinnituskiri e-posti teel
         fields: Te saate oma profiilil tabelina kuvada kuni 4 asja
         header: PNG, GIF või JPG. Kõige rohkem %{size}. Vähendatakse %{dimensions} pikslini
@@ -36,10 +44,11 @@ et:
         irreversible: Filtreeritud tuututused kaovad taastamatult, isegi kui filter on hiljem eemaldatud
         locale: Kasutajaliidese, e-kirjade ja push-teadete keel
         locked: Nõuab käsitsi jälgijate kinnitamist
-        password: Sisestage vähemalt 8 tähemärki
+        password: Vajalik on vähemalt 8 märki
         phrase: Kattub olenemata tuututuse teksti suurtähtedest või sisuhoiatusest
         scopes: Milliseid API-sid see rakendus tohib kasutada. Kui Te valite kõrgeima taseme, ei pea Te valima individuaalseid.
-        setting_aggregate_reblogs: Ära näita uusi upitusi tuututustele, mis on just hiljuti upitatud (ainult kehtib uutele upitusele)
+        setting_aggregate_reblogs: Ära kuva uusi postituste jagamisi, mis on hiljuti jagatud (kehtib vaid uutele jagamistele)
+        setting_always_send_emails: Kui aktiivselt Mastodoni kasutada, siis tavapäraselt e-postiga teavitusi ei saadeta
         setting_default_sensitive: Tundlik meedia on vaikimisi peidetud ning seda saab avada sellele klikkides
         setting_display_media_default: Peida tundlikuks märgitud meedia
         setting_display_media_hide_all: Alati peida kõik meedia
@@ -54,19 +63,70 @@ et:
       domain_allow:
         domain: See domeen saab tõmmata andmeid sellelt serverilt ning sissetulevad andmed sellelt domeenilt töödeldakse ning salvestatakse
       email_domain_block:
-        with_dns_records: Proovitakse ka üles vaadata selle domeeni DNS kirjed ning selle vastused samuti keelatakse
+        domain: See võib olla e-postiaadressis näha olev domeen või MX-kirje, mida aadress kasutab. Kontroll toimub liitumise käigus.
+        with_dns_records: Püütakse lahendada selle domeeni DNS-kirjed ja ühtlasi blokeerida ka selle tulemused
+      featured_tag:
+        name: 'Siin on mõned nendest siltidest mida sa oled kõige hiljutisemalt kasutanud:'
+      filters:
+        action: Chose which action to perform when a post matches the filter
+        actions:
+          hide: Completely hide the filtered content, behaving as if it did not exist
+          warn: Hide the filtered content behind a warning mentioning the filter's title
+      form_admin_settings:
+        backups_retention_period: Keep generated user archives for the specified number of days.
+        bootstrap_timeline_accounts: Need kasutajad kinnitatakse uute kasutajate jälgimissoovituste esiritta.
+        closed_registrations_message: Displayed when sign-ups are closed
+        content_cache_retention_period: Posts from other servers will be deleted after the specified number of days when set to a positive value. This may be irreversible.
+        custom_css: You can apply custom styles on the web version of Mastodon.
+        mascot: Overrides the illustration in the advanced web interface.
+        media_cache_retention_period: Downloaded media files will be deleted after the specified number of days when set to a positive value, and re-downloaded on demand.
+        profile_directory: Kasutajate kataloog kuvab nimekirja kasutajatest, kes on seda lubanud.
+        require_invite_text: When sign-ups require manual approval, make the “Why do you want to join?” text input mandatory rather than optional
+        site_contact_email: How people can reach you for legal or support inquiries.
+        site_contact_username: How people can reach you on Mastodon.
+        site_extended_description: Any additional information that may be useful to visitors and your users. Can be structured with Markdown syntax.
+        site_short_description: A short description to help uniquely identify your server. Who is running it, who is it for?
+        site_terms: Use your own privacy policy or leave blank to use the default. Can be structured with Markdown syntax.
+        site_title: How people may refer to your server besides its domain name.
+        theme: Theme that logged out visitors and new users see.
+        thumbnail: A roughly 2:1 image displayed alongside your server information.
+        timeline_preview: Logged out visitors will be able to browse the most recent public posts available on the server.
+        trendable_by_default: Skip manual review of trending content. Individual items can still be removed from trends after the fact.
+        trends: Populaarsuse suunad näitavad millised postitused, sildid ja uudislood koguvad sinu serveris tähelepanu.
       form_challenge:
-        current_password: Te sisenete turvalisele alale
+        current_password: Turvalisse alasse sisenemine
       imports:
         data: CSV fail eksporditi teisest Mastodoni serverist
       invite_request:
         text: See aitab meil üle vaadata Teie taotlust
+      ip_block:
+        comment: Valikuline. Talletamaks reegli lisamise põhjust.
+        expires_in: IP-aadressid on lõplik ressurss ja on tihtipeale ühiskasutuses või vahetub kasutaja. Sel põhjusel pole kestvad IP-piirangud soovituslikud.
+        ip: IPv4 või IPv6 aadress. Vahemike keelamine on võimalik CIDR-süntaksit kasutades. Ettevaatust, et iseend uksetaha ei jäta!
+        severities:
+          no_access: Keela ligipääs kõigile ressurssidele
+          sign_up_block: Uued liitumised pole võimalikud
+          sign_up_requires_approval: Uued liitumised vajavad kinnitamist
+        severity: Valik, mis juhtub päringutega sellelt IP-aadressilt
+      rule:
+        text: Describe a rule or requirement for users on this server. Try to keep it short and simple
       sessions:
-        otp: 'Sisesta kahesammulise autentimise kood loodud Teie mobiilirakenduse poolt või sisesta mõni taastuskood:'
+        otp: 'Kahe-etapise autentimise kood telefonirakendusest või mõni taastekood:'
+        webauthn: If it's an USB key be sure to insert it and, if necessary, tap it.
       tag:
         name: Te saate ainult muuta tähtede tõstetust, näiteks selleks, et muuta seda rohkem loetavaks
       user:
         chosen_languages: Kui valitud, ainult valitud keeltes tuututused näidatakse avalikes ajajoontes
+        role: The role controls which permissions the user has
+      user_role:
+        color: Color to be used for the role throughout the UI, as RGB in hex format
+        highlighted: This makes the role publicly visible
+        name: Public name of the role, if role is set to be displayed as a badge
+        permissions_as_keys: Users with this role will have access to...
+        position: Higher role decides conflict resolution in certain situations. Certain actions can only be performed on roles with a lower priority
+      webhook:
+        events: Select events to send
+        url: Where events will be sent to
     labels:
       account:
         fields:
@@ -87,8 +147,9 @@ et:
         types:
           disable: Keela
           none: Ära tee midagi
+          sensitive: Tundlik
           silence: Vaigista
-          suspend: Peata ja taastamatult kustuta konto andmed
+          suspend: Kustuta
         warning_preset_id: Kasuta hoiatuse eelseadistust
       announcement:
         all_day: Kogu päeva sündmus
@@ -96,13 +157,15 @@ et:
         scheduled_at: Ajasta avalikustamine
         starts_at: Sündmuse algus
         text: Teadaanne
+      appeal:
+        text: Explain why this decision should be reversed
       defaults:
         autofollow: Kutsu oma kontot jälgima
         avatar: Profiilipilt
         bot: See konto on robot
         chosen_languages: Filtreeri keeli
-        confirm_new_password: Kinnita uus salasõna
-        confirm_password: Kinnita salasõna
+        confirm_new_password: Uue salasõna kinnitamine
+        confirm_password: Salasõna kinnitamine
         context: Filtreeri kontekste
         current_password: Kehtiv salasõna
         data: Andmed
@@ -110,8 +173,9 @@ et:
         display_name: Kuvanimi
         email: E-posti aadress
         expires_in: Aegu pärast
-        fields: Profiili metaandmed
+        fields: Veebiviited
         header: Päis
+        honeypot: "%{label} (ära sisesta)"
         inbox_url: Relee sisendkausta URL
         irreversible: Kustuta selle asemel, et peita
         locale: Kasutajaliidese keel
@@ -119,18 +183,20 @@ et:
         max_uses: Maksimum kasutajate arv
         new_password: Uus salasõna
         note: Elulugu
-        otp_attempt: Kahesammulise autentimise kood
+        otp_attempt: Kahe-etapine kood
         password: Salasõna
         phrase: Võtmesõna või fraas
-        setting_advanced_layout: Aktiveeri arenenud veebiliides
-        setting_aggregate_reblogs: Grupita upitused ajajoontes
+        setting_advanced_layout: Aktiveeri kohandatud veebiliides
+        setting_aggregate_reblogs: Grupeeri jagamised ajajoontel
+        setting_always_send_emails: Always send e-mail notifications
         setting_auto_play_gif: Mängi GIF-e automaatselt
-        setting_boost_modal: Näita kinnitusdialoogi enne upitamist
+        setting_boost_modal: Näita enne jagamist kinnitusdialoogi
         setting_crop_images: Kärbi suurendamata tuututuste pildid resolutsiooni 16x9
         setting_default_language: Postituse keel
         setting_default_privacy: Postituse privaatsus
         setting_default_sensitive: Alati märgista meedia tundlikuks
         setting_delete_modal: Näita kinnitusdialoogi enne tuututuse kustutamist
+        setting_disable_swiping: Keela pühkimisliigutused
         setting_display_media: Meedia kuvarežiim
         setting_display_media_default: Vaikimisi
         setting_display_media_hide_all: Peida kõik
@@ -147,14 +213,44 @@ et:
         setting_use_blurhash: Näita peidetud meedia asemel värvilist pilti
         setting_use_pending_items: Aeglane režiim
         severity: Tõsidus
+        sign_in_token_attempt: Turvakood
+        title: Pealkiri
         type: Impordi tüüp
         username: Kasutajanimi
         username_or_email: Kasutajanimi või e-post
         whole_word: Terve sõna
       email_domain_block:
-        with_dns_records: Kaasa domeeni MX kirjed ning IP aadressid
+        with_dns_records: Kaasa domeeni MX-kirjed ning IP-aadressid
       featured_tag:
         name: Silt
+      filters:
+        actions:
+          hide: Hide completely
+          warn: Hide with a warning
+      form_admin_settings:
+        backups_retention_period: User archive retention period
+        bootstrap_timeline_accounts: Always recommend these accounts to new users
+        closed_registrations_message: Kohandatud teade, kui liitumine pole võimalik
+        content_cache_retention_period: Content cache retention period
+        custom_css: Kohandatud CSS
+        mascot: Custom mascot (legacy)
+        media_cache_retention_period: Media cache retention period
+        profile_directory: Luba kasutajate kataloog
+        registrations_mode: Who can sign-up
+        require_invite_text: Require a reason to join
+        show_domain_blocks: Näita domeenikeelde
+        show_domain_blocks_rationale: Näite domeenikeeldude põhjuseid
+        site_contact_email: Kontaktisiku e-post
+        site_contact_username: Kontaktisiku kasutajanimi
+        site_extended_description: Serveri pikem kirjeldus
+        site_short_description: Serveri lühikirjeldus
+        site_terms: Privaatsuspoliitika
+        site_title: Serveri nimi
+        theme: Vaikmisi teema
+        thumbnail: Serveri pisipilt
+        timeline_preview: Allow unauthenticated access to public timelines
+        trendable_by_default: Allow trends without prior review
+        trends: Luba trendid
       interactions:
         must_be_follower: Keela teavitused mittejälgijatelt
         must_be_following: Keela teavitused kasutajatelt, keda sa ei jälgi
@@ -163,21 +259,50 @@ et:
         comment: Kommenteerima
       invite_request:
         text: Miks Te soovite liituda?
+      ip_block:
+        comment: Kommentaar
+        ip: IP
+        severities:
+          no_access: Keela ligipääs
+          sign_up_block: Keela liitumised
+          sign_up_requires_approval: Piira liitumisi
+        severity: Reegel
       notification_emails:
+        appeal: Someone appeals a moderator decision
         digest: Saada ülevaatlike e-kirju
         favourite: Saada e-kiri, kui keegi lisab teie staatuse lemmikuks
         follow: Saada e-kiri, kui keegi alustab Teie jälgimist
         follow_request: Saada e-kiri, kui keegi soovib Teid jälgida
         mention: Saada e-kiri, kui keegi mainib Teid
         pending_account: Saada e-kiri, kui uus konto vajab ülevaatlust
-        reblog: Saada e-kiri, kui keegi upitab Teie staatust
+        reblog: Keegi jagas postitust
+        report: Esitatud on uus raport
+        trending_tag: New trend requires review
+      rule:
+        text: Reegel
       tag:
         listable: Luba sellel sildil ilmuda profiilide kataloogis
         name: Silt
         trendable: Luba sellel sildil trendida
         usable: Luba tuututustel seda silti kasutada
-    'no': Ei
+      user:
+        role: Roll
+      user_role:
+        color: Badge color
+        highlighted: Display role as badge on user profiles
+        name: Nimi
+        permissions_as_keys: Permissions
+        position: Positsioon
+      webhook:
+        events: Lubatud sündmused
+        url: Lõpp-punkti URL
+    'no': 'Ei'
+    not_recommended: Pole soovitatav
     recommended: Soovituslik
     required:
+      mark: "*"
       text: kohustuslik
-    'yes': Jah
+    title:
+      sessions:
+        webauthn: Use one of your security keys to sign in
+    'yes': 'Jah'

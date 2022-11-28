@@ -60,7 +60,7 @@ et:
         title: Ilmnes viga
       new:
         prompt_html: "%{client_name} would like permission to access your account. It is a third-party application. <strong>If you do not trust it, then you should not authorize it.</strong>"
-        review_permissions: Review permissions
+        review_permissions: Lubade ülevaade
         title: Autoriseerimine vajalik
       show:
         title: Kopeeri see autoriseerimisvõti ja kleebi see rakendusse.
@@ -70,12 +70,12 @@ et:
       confirmations:
         revoke: Olete kindel?
       index:
-        authorized_at: Authorized on %{date}
+        authorized_at: Autoriseeritud %{date}
         description_html: These are applications that can access your account using the API. If there are applications you do not recognize here, or an application is misbehaving, you can revoke its access.
-        last_used_at: Last used on %{date}
-        never_used: Never used
-        scopes: Permissions
-        superapp: Internal
+        last_used_at: Viimati kasutatud %{date}
+        never_used: Pole kasutatud
+        scopes: Õigused
+        superapp: Sisemine
         title: Autoriseeritud rakendused
     errors:
       messages:
@@ -113,31 +113,31 @@ et:
           notice: Rakendus tagasi lükatud.
     grouped_scopes:
       access:
-        read: Read-only access
-        read/write: Read and write access
-        write: Write-only access
+        read: Vaid lugemisõigus
+        read/write: Lugemis- ja kirjutusõigus
+        write: Vaid kirjutusõigus
       title:
-        accounts: Accounts
-        admin/accounts: Administration of accounts
-        admin/all: All administrative functions
-        admin/reports: Administration of reports
-        all: Everything
-        blocks: Blocks
-        bookmarks: Bookmarks
-        conversations: Conversations
-        crypto: End-to-end encryption
-        favourites: Favourites
-        filters: Filters
-        follow: Relationships
-        follows: Follows
-        lists: Lists
-        media: Media attachments
-        mutes: Mutes
-        notifications: Notifications
-        push: Push notifications
-        reports: Reports
-        search: Search
-        statuses: Posts
+        accounts: Kontod
+        admin/accounts: Kontode haldus
+        admin/all: Kõik haldusfunktsioonid
+        admin/reports: Raportite haldus
+        all: Kõik
+        blocks: Keelud
+        bookmarks: Järjehoidjad
+        conversations: Vestlused
+        crypto: Otspunktkrüpteerimine
+        favourites: Lemmikud
+        filters: Filtrid
+        follow: Seosed
+        follows: Jälgimised
+        lists: Nimistud
+        media: Lisatud meedia
+        mutes: Vaigistused
+        notifications: Teavitused
+        push: Tõuketeated
+        reports: Teavitused
+        search: Otsing
+        statuses: Postitused
     layouts:
       admin:
         nav:
@@ -152,7 +152,7 @@ et:
       "admin:write": muuta kõiki andmeid serveril
       "admin:write:accounts": teostada moderaatori tegevusi kontodel
       "admin:write:reports": teostada moderaatori tegevusi teavitustel
-      crypto: use end-to-end encryption
+      crypto: kasuta otspunktkrüpeerimist
       follow: muuta kontode suhteid
       push: saada Teie teateid
       read: lugeda kogu Teie konto andmeid
@@ -172,7 +172,7 @@ et:
       "write:accounts": redigeerida Teie profiili
       "write:blocks": blokeerida kontosid ja domeene
       "write:bookmarks": lisada staatusele järjehoidjaid
-      "write:conversations": mute and delete conversations
+      "write:conversations": vaigista ja kustuta vestlused
       "write:favourites": lisada staatuseid lemmikuks
       "write:filters": luua filtreid
       "write:follows": jälgida inimesi
