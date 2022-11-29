@@ -964,6 +964,8 @@ et:
     rules:
       preamble: Neist kinnipidamist jälgivad %{domain} moderaatorid.
       title: Mõned põhireeglid.
+      accept: Nõustun
+      back: Tagasi
     security: Turvalisus
     set_new_password: Uue salasõna määramine
     setup:
